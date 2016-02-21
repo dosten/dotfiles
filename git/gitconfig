@@ -1,0 +1,28 @@
+[branch]
+  autosetuprebase = always
+
+[color]
+  ui = auto
+
+[core]
+  autocrlf = input
+  editor = vim
+  excludesfile = ~/.gitignore
+
+[credential]
+  helper = cache --timeout=604800
+
+[fetch]
+  prune = true
+
+[help]
+  autocorrect = 1
+
+[pull]
+  rebase = true
+
+[push]
+  default = current
+
+[rebase]
+  autosquash = true
