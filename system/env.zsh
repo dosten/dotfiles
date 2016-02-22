@@ -1,2 +1,2 @@
 export EDITOR="vim"
-export PROJECTS="$HOME/Code"
+export TERM="xterm-256color"
