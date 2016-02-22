@@ -115,9 +115,9 @@ install_themes () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  for theme in $(find -H "$DOT/zsh/themes" -maxdepth 1 -name '*.zsh-theme')
+  for theme in $(find -H "$DOT" -maxdepth 3 -name '*.zsh-theme')
   do
-    dst="$HOME/.oh-my-zsh/themes/$(basename "$theme")"
+    dst="$ZSH_CUSTOM/themes/$(basename "$theme")"
     link_file "$theme" "$dst"
   done
 }
