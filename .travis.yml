@@ -9,4 +9,4 @@ install:
   - cabal install shellcheck
 
 script:
-  - shellcheck script/*
+  - shellcheck script/* **/install.sh
