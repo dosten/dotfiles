@@ -1,14 +1,12 @@
-language: bash
+language: haskell
 
 sudo: false
 
 branches:
-    only: master
+  only: master
 
-addons:
-    apt:
-        packages:
-            - shellcheck
+install:
+  - cabal install shellcheck
 
 script:
-    - shellcheck script/*
+  - shellcheck script/*
