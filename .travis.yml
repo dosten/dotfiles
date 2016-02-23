@@ -1,0 +1,14 @@
+language: bash
+
+sudo: false
+
+branches:
+    only: master
+
+addons:
+    apt:
+        packages:
+            - shellcheck
+
+script:
+    - shellcheck script/*
