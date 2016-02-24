@@ -6,4 +6,4 @@ cd "$(dirname "$0")/.."
 
 declare installer
 
-find . -name install.sh | while read installer -r ; do sh -c "${installer}" ; done
+find . -name install.sh | while read -r installer ; do sh -c "${installer}" ; done
