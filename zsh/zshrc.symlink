@@ -1,6 +1,6 @@
 DOT=$HOME/.dotfiles
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="dosten"
+ZSH_THEME="jreese"
 
 declare -U config_files
 config_files=($DOT/**/*.zsh)

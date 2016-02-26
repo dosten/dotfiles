@@ -112,18 +112,6 @@ install_ohmyzsh () {
   fi
 }
 
-install_themes () {
-  info 'installing themes'
-
-  local overwrite_all=false backup_all=false skip_all=false
-
-  for theme in $(find -H "$DOT" -maxdepth 3 -name '*.zsh-theme')
-  do
-    dst="$HOME/.oh-my-zsh/custom/themes/$(basename "$theme")"
-    link_file "$theme" "$dst"
-  done
-}
-
 install_dotfiles () {
   info 'installing dotfiles'
 
@@ -147,7 +135,6 @@ set_default_shell () {
 
 install_zsh
 install_ohmyzsh
-install_themes
 install_dotfiles
 set_default_shell
 
