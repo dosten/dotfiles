@@ -9,19 +9,19 @@ DOT=$(pwd -P)
 echo ''
 
 info () {
-  printf "\r  [ \033[00;34m..\033[0m ] %s\n" "$1"
+  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
 }
 
 user () {
-  printf "\r  [ \033[0;33m??\033[0m ] %s\n" "$1"
+  printf "\r  [ \033[0;33m??\033[0m ] $1\n"
 }
 
 success () {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] %s\n" "$1"
+  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
 }
 
 fail () {
-  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] %s\n" "$1"
+  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
   echo ''
   exit
 }
@@ -29,15 +29,14 @@ fail () {
 link_file () {
   local src=$1 dst=$2
 
-  local overwrite="" backup="" skip=""
-  local action=""
+  local overwrite= backup= skip=
+  local action=
 
-  if [ -f "$dst" ] || [ -d "$dst" ] || [ -L "$dst" ]
+  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]
   then
     if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
     then
-      local currentSrc=""
-      currentSrc="$(readlink "$dst")"
+      local currentSrc="$(readlink $dst)"
 
       if [ "$currentSrc" == "$src" ]
       then
@@ -45,7 +44,7 @@ link_file () {
       else
         user "file already exists: $dst ($(basename "$src")), what do you want to do?\n\
          [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
-        read -r -n 1 action
+        read -n 1 action
 
         case "$action" in
           o )
@@ -96,7 +95,7 @@ link_file () {
 }
 
 install_zsh () {
-  if test ! "$(which zsh)"
+  if test ! $(which zsh)
   then
     info 'installing zsh'
 
@@ -118,9 +117,9 @@ install_themes () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  find -H "$DOT" -maxdepth 3 -name '*.zsh-theme' -not -path '*.git*' | while read -r theme
+  for theme in $(find -H "$DOT" -maxdepth 3 -name '*.zsh-theme')
   do
-    dst="$HOME/.oh-my-zsh/custom/themes/$(basename "$theme")"
+    dst="$ZSH_CUSTOM/themes/$(basename "$theme")"
     link_file "$theme" "$dst"
   done
 }
@@ -130,7 +129,7 @@ install_dotfiles () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  find -H "$DOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*' | while read -r dotfile
+  for dotfile in $(find -H "$DOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
   do
     dst="$HOME/.$(basename "${dotfile%.*}")"
     link_file "$dotfile" "$dst"
@@ -138,11 +137,11 @@ install_dotfiles () {
 }
 
 set_default_shell () {
-  if [ "$SHELL" != "$(which zsh)" ]
+  if [ "$SHELL" != $(which zsh) ]
   then
     info 'setting up zsh as default shell'
 
-    chsh -s "$(which zsh)"
+    chsh -s $(which zsh)
   fi
 }
 
