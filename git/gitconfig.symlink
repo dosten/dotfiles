@@ -29,3 +29,7 @@
 
 [rebase]
   autosquash = true
+
+[user]
+  email = diego@saintesteben.me
+  name = Diego Saint Esteben
