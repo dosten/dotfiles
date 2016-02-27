@@ -124,6 +124,13 @@ install_dotfiles () {
   done
 }
 
+install_theme () {
+  info 'installing theme'
+
+  rm -f $HOME/.oh-my-zsh/themes/pure.zsh-theme
+  wget https://raw.githubusercontent.com/sindresorhus/pure/master/pure.zsh -O $HOME/.oh-my-zsh/custom/themes/pure.zsh-theme
+}
+
 set_default_shell () {
   if [ "$SHELL" != $(which zsh) ]
   then
@@ -136,7 +143,11 @@ set_default_shell () {
 install_zsh
 install_ohmyzsh
 install_dotfiles
+install_theme
 set_default_shell
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+git clone git://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
 echo ''
 echo '  All installed!'
