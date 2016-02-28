@@ -1,3 +1,7 @@
+# disable the status bar
+set -g status off
+
+# move between panes using the arrow keys
 bind -n C-Left select-pane -L
 bind -n C-Right select-pane -R
 bind -n C-Up select-pane -U
