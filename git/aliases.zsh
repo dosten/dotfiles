@@ -1,5 +1,4 @@
-hub_path=$(which hub)
-if (( $+commands[hub] ))
+if hash hub 2>/dev/null
 then
-  alias git=$hub_path
+  alias git=hub
 fi
