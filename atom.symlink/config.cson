@@ -1,0 +1,27 @@
+"*":
+  core:
+    disabledPackages: [
+      "spell-check"
+      "git-diff"
+      "image-view"
+      "language-clojure"
+      "language-csharp"
+      "language-java"
+      "language-objective-c"
+      "language-perl"
+      "language-property-list"
+      "link"
+      "markdown-preview"
+      "metrics"
+      "open-on-github"
+      "package-generator"
+      "welcome"
+    ]
+  editor:
+    fontFamily: "Hack"
+    fontSize: 12
+    invisibles: {}
+    showIndentGuide: true
+    zoomFontWhenCtrlScrolling: false
+  welcome:
+    showOnStartup: false
