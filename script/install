@@ -129,6 +129,7 @@ install_theme () {
 
   rm -f $HOME/.oh-my-zsh/themes/pure.zsh-theme
   wget https://raw.githubusercontent.com/sindresorhus/pure/master/pure.zsh -O $HOME/.oh-my-zsh/custom/themes/pure.zsh-theme
+  wget https://raw.githubusercontent.com/sindresorhus/pure/master/async.zsh -O $HOME/.oh-my-zsh/custom/async.zsh
 }
 
 set_default_shell () {
