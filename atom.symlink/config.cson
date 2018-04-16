@@ -1,4 +1,6 @@
 "*":
+  "atom-package-deps":
+    ignored: []
   core:
     disabledPackages: [
       "spell-check"
@@ -22,5 +24,11 @@
     invisibles: {}
     showIndentGuide: true
     zoomFontWhenCtrlScrolling: false
+  "exception-reporting":
+    userId: "212d9d5d-1516-3ebf-35df-3115e3d80450"
+  "linter-ui-default":
+    panelHeight: 69
+  "tree-view":
+    hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
